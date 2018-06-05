@@ -34,5 +34,9 @@ Route::post('login','Auth\LoginController@login')->name('loginPost');
 
 Route::get('logout','Auth\LoginController@logout')->name('logout');
 
+//registro
+Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register','Auth\RegisterController@register')->name('registerPost');
+
 //client
 Route::get('/clientes','ClienteController@index')->name('cliente');

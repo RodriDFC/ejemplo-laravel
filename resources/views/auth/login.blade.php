@@ -14,6 +14,7 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+            <a class="btn btn-info" href="{{route('register')}}">Registrase</a><br>
         </div>
     </form>
 
