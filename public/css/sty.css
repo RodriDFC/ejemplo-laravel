@@ -1,0 +1,22 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+    background: url("../img/laravel.jpg") bottom right fixed;
+    font-size: larger;
+    font-weight: bold;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #32383e;
+    color: #f9f9f9;
+    text-align: center;
+}
+
