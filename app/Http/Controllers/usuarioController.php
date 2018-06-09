@@ -15,10 +15,8 @@ class usuarioController extends Controller
 {
 
     public function __construct(){
-        $this->middleware([
-            'auth',
-            'verificarRoles:administrador,supervisor'
-            ]);
+        $this->middleware(['auth']);
+        $this->middleware('verificarRoles:administrador,supervisor',['except'=>['detalle','edit','update']]);
     }
 
 
@@ -36,6 +34,8 @@ class usuarioController extends Controller
         else{
             $profession='no tiene profesion';
         }
+
+        $this->authorize($user);
 
         return view('detalleUser',compact('user','profession'));
     }
@@ -88,6 +88,9 @@ class usuarioController extends Controller
         if ($profession1==null){
             $profession1='seleccione una opcion';
         }
+
+        $this->authorize($user);
+
         return view('editUser',compact('user','profession1','professions'));//['user'=>$user]
     }
     public function update(User $user){
@@ -113,10 +116,14 @@ class usuarioController extends Controller
         }else{
             unset($data['password']);
         }
+
+        $this->authorize($user);
+
         $user->update($data);
         return redirect()->route('detalle',['user'=>$user]);
     }
     public function destroy(User $user){
+        $this->authorize($user);
         $user->delete();
         return redirect()->route('usuarios');
     }

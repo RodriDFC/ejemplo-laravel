@@ -29,6 +29,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{auth()->user()->name}}</a>
                         <ul class="dropdown-menu bg-dark">
                             <li class="navbar-item">
+                                <a href="{{route('detalle',['id'=>auth()->user()->id])}}" class="nav-link">Mi cuenta</a>
                                 <a class="nav-link" href="{{route('logout')}}">cerrar sesion</a>
                             </li>
                         </ul>
