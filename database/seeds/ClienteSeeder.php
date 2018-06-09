@@ -10,8 +10,8 @@ class ClienteSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        Factory(Cliente::class,10)->create();
-    }
+    //public function run()
+    //{
+      //  Factory(Cliente::class,10)->create();
+    //}
 }

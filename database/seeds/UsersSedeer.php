@@ -16,11 +16,11 @@ class UsersSedeer extends Seeder
     {
         //$profesion=Profesion::Where('titulo','desarrollador back-end')
           //  ->value('id');
-        //User::create([
-           //'name'=>'luz',
-            //'email'=>'luz@gmail.com',
-            //'password'=>'123',
-            //'profesion_id'=>$profesion,
-       // ]);
+        User::create([
+           'name'=>'admin',
+            'email'=>'admin@gmail.com',
+            'password'=>bcrypt('admin123'),
+            'role_id'=>'1'
+        ]);
     }
 }
