@@ -6,11 +6,21 @@
         {!! csrf_field() !!}<!--siempre añadir el token--->
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}">
+            <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" required>
+                @if ($errors->has('email'))
+                    <span class="alert-danger">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password">
+            @if ($errors->has('password'))
+                <span class="alert-danger">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Iniciar sesion</button>
