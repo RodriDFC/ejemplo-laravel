@@ -40,3 +40,6 @@ Route::post('register','Auth\RegisterController@register')->name('registerPost')
 
 //client
 Route::get('/clientes','ClienteController@index')->name('cliente');
+
+//producto
+Route::get('/productos','ProductoController@index')->name('producto');

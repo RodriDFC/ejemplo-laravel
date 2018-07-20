@@ -25,6 +25,9 @@
                     <li class="navbar-item">
                         <a class="nav-link " href="{{route('cliente')}}">Clientes</a>
                     </li>
+                    <li class="navbar-item">
+                        <a class="nav-link " href="{{route('producto')}}">Productos</a>
+                    </li>
                     <li class="dropdown navbar-item">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{auth()->user()->name}}</a>
                         <ul class="dropdown-menu bg-dark">
