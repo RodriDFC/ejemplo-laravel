@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('contenido')
-    <h1 class="display-4">Lista de Prodructos</h1>
+    <h1 class="display-4">Lista de Productos</h1>
     @if($producto->isNotEmpty())
         <table class="table ">
             <thead class="thead-dark">
