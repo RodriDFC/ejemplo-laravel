@@ -14,7 +14,8 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        //
+        $facturas=Factura::all();//with('cliente')->get();
+        return view('factura.facturas',compact('facturas'));
     }
 
     /**
@@ -46,7 +47,7 @@ class FacturaController extends Controller
      */
     public function show(Factura $factura)
     {
-        //
+        return view('factura.detalleFactura',compact('factura'));
     }
 
     /**

@@ -43,3 +43,8 @@ Route::get('/clientes','ClienteController@index')->name('cliente');
 
 //producto
 Route::get('/productos','ProductoController@index')->name('producto');
+
+//
+Route::get('/facturas','FacturaController@index')->name('facturas');
+Route::get('/facturas/{factura}','FacturaController@show')->name('detalleFactura')
+    ->where('factura','[0-9]+');
