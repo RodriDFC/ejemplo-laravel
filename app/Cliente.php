@@ -9,7 +9,7 @@ class Cliente extends Model
 {
     use Notifiable;
     protected $fillable = [
-        'nombre_completo', 'carnet_identidad', 'direccion','telefono','sexo'
+        'nombre_completo', 'carnet_identidad', 'direccion','telefono',
     ];
 
     public function factura(){

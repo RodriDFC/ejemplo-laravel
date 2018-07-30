@@ -48,3 +48,5 @@ Route::get('/productos','ProductoController@index')->name('producto');
 Route::get('/facturas','FacturaController@index')->name('facturas');
 Route::get('/facturas/{factura}','FacturaController@show')->name('detalleFactura')
     ->where('factura','[0-9]+');
+Route::get('facturas/crear','FacturaController@create')->name('crearFactura');
+Route::post('facturas/guardar','FacturaController@store')->name('guardarFactura');

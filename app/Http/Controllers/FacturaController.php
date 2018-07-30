@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\Factura;
+use App\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FacturaController extends Controller
 {
@@ -25,7 +28,8 @@ class FacturaController extends Controller
      */
     public function create()
     {
-        //
+        $productos=Producto::all()->pluck('nombre_producto');
+        return view('factura.crearFactura',compact('productos'));
     }
 
     /**
@@ -36,7 +40,40 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate(request(), [
+            'nombre_completo' => 'required',
+            'carnet_identidad'=>['required','unique:clientes,carnet_identidad'],
+            'direccion'=>'required',
+            'telefono'=>'required',
+            'nombre_producto'=> ['required','not_in:seleccione una opcion'],
+            'precio_unitario'=>'required',
+            'cantidad'=>'required',
+            'precio_total_producto'=>'required',
+            'fecha'=>['required','date'],
+            'modo_pago'=> ['required','not_in:seleccione una opcion'],
+            'total_pago'=>'required',
+        ]);
+        DB::transaction(function () use($data){
+            $cliente=Cliente::create([
+                'nombre_completo'=>$data['nombre_completo'],
+                'carnet_identidad'=>$data['carnet_identidad'],
+                'direccion'=>$data['direccion'],
+                'telefono'=>$data['telefono']
+            ]);
+            $factura=$cliente->factura()->create([
+                'cliente_id'=>$cliente->id,
+                'fecha'=>$data['fecha'],
+                'modo_pago'=>$data['modo_pago'],
+                'total_pago'=>$data['total_pago'],
+            ]);
+            $idProducto=Producto::where('nombre_producto',$data['nombre_producto'])->value('id');
+            $factura->productos()->attach($idProducto,[
+                'cantidad'=>$data['cantidad'],
+                'precio_total_producto'=>$data['precio_total_producto'],
+            ]);
+        });
+
+        return redirect()->route('facturas');
     }
 
     /**

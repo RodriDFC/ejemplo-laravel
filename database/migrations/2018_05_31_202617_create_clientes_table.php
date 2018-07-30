@@ -19,7 +19,6 @@ class CreateClientesTable extends Migration
             $table->integer('carnet_identidad')->unique();
             $table->String('direccion');
             $table->String('telefono')->nullable();
-            $table->String('sexo');
             $table->timestamps();
         });
     }
