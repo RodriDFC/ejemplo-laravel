@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Profesion;
 use App\Role;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -48,4 +49,9 @@ class User extends Authenticatable
         return $this->hasRoles(['administrador']);
     }
 
+    public function scopeName($query, $name){
+       if(trim($name) != ""){
+            $query->where('name','like',"%$name%");
+        }
+    }
 }

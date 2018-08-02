@@ -20,8 +20,9 @@ class usuarioController extends Controller
     }
 
 
-    public function usuario(){
-        $user=User::all();
+    public function usuario(Request $request){
+        //dd($request->get('name'));
+        $user=User::name($request->get('name'))->get();
         return view('usuarios',compact('user'));
     }
     public function detalle(User $user){//si en la ruta hay un modelo {user}.... en el metodo definir (Modelo $variable)
