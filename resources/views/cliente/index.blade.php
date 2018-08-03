@@ -23,10 +23,10 @@
                     </td>
                 </tr>
             @endforeach
+            {!! $clients->links('pagination::bootstrap-4')  !!}
             </tbody>
         </table>
     @else
         <li>No hay usuarios</li>
     @endif
-
 @endsection

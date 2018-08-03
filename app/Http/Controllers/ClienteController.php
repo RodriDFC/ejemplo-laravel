@@ -17,7 +17,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clients=Cliente::all();
+        $clients=Cliente::orderBy('carnet_identidad','DESC')->paginate(15);
+        //DESC=mas grande primero....ASC=mas pequeño primero
         return view('cliente.index',compact('clients'));
     }
 
