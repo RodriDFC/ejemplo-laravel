@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','profesion_id'
+        'name', 'email', 'password','profesion_id','confirmation_code'
     ];
 
     /**
@@ -53,5 +53,8 @@ class User extends Authenticatable
        if(trim($name) != ""){
             $query->where('name','like',"%$name%");
         }
+    }
+    public function isConfirmed(){
+        return $this->confirmado;
     }
 }

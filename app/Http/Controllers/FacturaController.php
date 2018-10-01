@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Factura;
+use App\Http\Middleware\verificarEmail;
 use App\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class FacturaController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+        $this->middleware(['verificarEmail']);
+    }
     /**
      * Display a listing of the resource.
      *

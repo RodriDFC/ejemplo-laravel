@@ -14,8 +14,8 @@ class CreateRolIdUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('rol_id')->after('profesion_id')->nullable();
-            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->unsignedInteger('role_id')->after('profesion_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
     /**

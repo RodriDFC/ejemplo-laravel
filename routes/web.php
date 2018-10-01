@@ -50,3 +50,6 @@ Route::get('/facturas/{factura}','FacturaController@show')->name('detalleFactura
     ->where('factura','[0-9]+');
 Route::get('facturas/crear','FacturaController@create')->name('crearFactura');
 Route::post('facturas/guardar','FacturaController@store')->name('guardarFactura');
+
+// E-mail verification
+Route::get('/register/verify/{code}', 'Auth\RegisterController@verify');

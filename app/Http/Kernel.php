@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
 
 
         'verificarRoles' => \App\Http\Middleware\VerificarRoles::class,
+        'verificarEmail' => \App\Http\Middleware\VerificarEmail::class,
 
     ];
 }
