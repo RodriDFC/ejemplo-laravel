@@ -75,10 +75,10 @@ class usuarioController extends Controller
         $data['profesion_id']=$profession;
 
         User::create([
-           'name'=>$data['name'],
+            'name'=>$data['name'],
             'email'=>$data['email'],
             'password'=>bcrypt($data['password']),
-           'profesion_id'=>$data['profesion_id']
+            'profesion_id'=>$data['profesion_id']
         ]);
 
         return redirect()->route('usuarios');
