@@ -70,7 +70,8 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'confirmation_code' => $data['confirmation_code']
         ]);
-        Mail::send('emails.bienvenido', $data, function($message) use ($data) {
+        $data1=$data;
+        Mail::send('emails.bienvenido', $data1, function($message) use ($data) {
             $message->to($data['email'], $data['name'])->subject('Por favor confirma tu correo');
         });
          return $user;
